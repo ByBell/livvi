@@ -1,0 +1,838 @@
+/* --------------------------------
+
+Primary style
+
+-------------------------------- */
+@@font-face {
+    font-family: "Impact";
+    src: url('css/font/Impact.ttf');
+}
+
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Open Sans", sans-serif;
+  color: #25283D;
+  background-color: #ECF0F1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: #25283D;
+  text-decoration: none;
+}
+
+h1 {
+  font-family: "Exo", sans-serif;
+  font-weight: bold;
+	font-size: 3em;
+}
+
+h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+	font-size: 1em;
+}
+
+main a:hover {
+    color: rgb(95, 137, 199);
+}
+
+/* --------------------------------
+
+1. Auto-Hiding Navigation - Simple
+
+-------------------------------- */
+.cd-auto-hide-header {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #ffffff;
+  /* Force Hardware Acceleration */
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  will-change: transform;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+.cd-auto-hide-header::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.cd-auto-hide-header.is-hidden {
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+
+.cd-hero-content h1 {
+	font-size: 4.5em;
+	/*color: #ffd63f;*/
+    color: #272553;
+    text-shadow: 4px 4px #fff;
+}
+.cd-hero-content h2 {
+  /*font-size: 1em;*/
+  /*color: rgba(0,0,0,.5);*/
+  /*color: rgba(95, 137, 199, .85);*/
+  color: rgba(255,255,255,.85);
+  font-size: 3em;
+}
+
+@media only screen and (min-width: 1024px) {
+	.cd-hero-content h1 {
+	font-size: 6em;
+	text-shadow: 6px 6px #fff;
+}
+	.cd-hero-content h2 {
+	/*font-size: 2em;*/
+  font-size: 3em;
+}
+
+  .cd-auto-hide-header {
+    height: 80px;
+  }
+}
+
+.cd-auto-hide-header .logo,
+.cd-auto-hide-header .nav-trigger {
+  position: absolute;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.cd-auto-hide-header .logo {
+  left: 5%;
+}
+.cd-auto-hide-header .logo a, .cd-auto-hide-header .logo img {
+  display: block;
+/*	Logo LIVVI*/
+	height: 3.25em;
+}
+
+.cd-auto-hide-header .nav-trigger {
+  /* vertically align its content */
+  display: table;
+  height: 100%;
+  padding: 0 1em;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #25283D;
+  font-weight: bold;
+  right: 0;
+  border-left: 1px solid #f2f2f2;
+}
+.cd-auto-hide-header .nav-trigger span {
+  /* vertically align inside parent element */
+  display: table-cell;
+  vertical-align: middle;
+}
+.cd-auto-hide-header .nav-trigger em, .cd-auto-hide-header .nav-trigger em::after, .cd-auto-hide-header .nav-trigger em::before {
+  /* this is the menu icon */
+  display: block;
+  position: relative;
+  height: 2px;
+  width: 22px;
+  background-color: #25283D;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.cd-auto-hide-header .nav-trigger em {
+  /* this is the menu central line */
+  margin: 6px auto 14px;
+  -webkit-transition: background-color .2s;
+  transition: background-color .2s;
+}
+.cd-auto-hide-header .nav-trigger em::before, .cd-auto-hide-header .nav-trigger em::after {
+  position: absolute;
+  content: '';
+  left: 0;
+  -webkit-transition: -webkit-transform .2s;
+  transition: -webkit-transform .2s;
+  transition: transform .2s;
+  transition: transform .2s, -webkit-transform .2s;
+}
+.cd-auto-hide-header .nav-trigger em::before {
+  /* this is the menu icon top line */
+  -webkit-transform: translateY(-6px);
+      -ms-transform: translateY(-6px);
+          transform: translateY(-6px);
+}
+.cd-auto-hide-header .nav-trigger em::after {
+  /* this is the menu icon bottom line */
+  -webkit-transform: translateY(6px);
+      -ms-transform: translateY(6px);
+          transform: translateY(6px);
+}
+@media only screen and (min-width: 1024px) {
+
+/*	Logo LIVVI width vp >= 1024px*/
+	.cd-auto-hide-header .logo a, .cd-auto-hide-header .logo img {
+  display: block;
+	height: 4.25em;
+}
+
+
+  .cd-auto-hide-header .nav-trigger {
+    display: none;
+  }
+}
+
+.cd-auto-hide-header.nav-open .nav-trigger em {
+  /* transform menu icon into a 'X' icon */
+  background-color: rgba(255, 255, 255, 0);
+}
+.cd-auto-hide-header.nav-open .nav-trigger em::before {
+  /* rotate top line */
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.cd-auto-hide-header.nav-open .nav-trigger em::after {
+  /* rotate bottom line */
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.cd-primary-nav {
+  display: inline-block;
+  float: right;
+  height: 100%;
+  padding-right: 5%;
+}
+.cd-primary-nav > ul {
+  position: absolute;
+  z-index: 2;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  display: none;
+  box-shadow: 0 14px 20px rgba(0, 0, 0, 0.2);
+}
+.cd-primary-nav > ul a {
+  /* target primary-nav links */
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 5%;
+  color: #25283D;
+  /*font-size: 1.8rem;*/
+  border-top: 1px solid #f2f2f2;
+}
+.cd-primary-nav > ul a:hover, .cd-primary-nav > ul a.active {
+  /*color: #FFD63F;*/
+  color: rgb(95, 137, 199);
+}
+@media only screen and (min-width: 1024px) {
+  .cd-primary-nav {
+    /* vertically align its content */
+    display: table;
+  }
+  .cd-primary-nav > ul {
+    /* vertically align inside parent element */
+    display: table-cell;
+    vertical-align: middle;
+    /* reset mobile style */
+    position: relative;
+    width: auto;
+    top: 0;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  .cd-primary-nav > ul::after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+  .cd-primary-nav > ul li {
+    display: inline-block;
+    float: left;
+    margin-right: 1.5em;
+  }
+  .cd-primary-nav > ul li:last-of-type {
+    margin-right: 0;
+  }
+  .cd-primary-nav > ul a {
+    /* reset mobile style */
+    height: auto;
+    line-height: normal;
+    padding: 0;
+    border: none;
+  }
+}
+
+.nav-open .cd-primary-nav ul,
+.cd-primary-nav ul:target {
+  /*
+  	show primary nav - mobile only
+  	:target is used to show navigation on no-js devices
+  */
+  display: block;
+}
+@media only screen and (min-width: 1024px) {
+  .nav-open .cd-primary-nav ul,
+  .cd-primary-nav ul:target {
+    display: table-cell;
+  }
+}
+
+/* --------------------------------
+
+2. Auto-Hiding Navigation - with Sub Nav
+
+-------------------------------- */
+.cd-secondary-nav {
+  position: relative;
+  z-index: 1;
+  clear: both;
+  width: 100%;
+  height: 50px;
+  background-color: #555; /* #25283D; */
+  /* Force Hardware Acceleration */
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  will-change: transform;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+.cd-secondary-nav::after {
+  /* gradient on the right - to indicate it's possible to scroll */
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 150px;
+  background: transparent;
+  background: -webkit-linear-gradient(right, rgba(0,0,0,.5), rgba(37, 40, 61, 0));
+  background: linear-gradient(to left, rgba(0,0,0,.5), rgba(37, 40, 61, 0));
+  pointer-events: none;
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+.cd-secondary-nav.nav-end::after {
+  opacity: 0;
+}
+.cd-secondary-nav ul, .cd-secondary-nav li, .cd-secondary-nav a {
+  height: 100%;
+}
+.cd-secondary-nav ul {
+  /* enables a flex context for all its direct children */
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 5%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.cd-secondary-nav ul::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.cd-secondary-nav li {
+  display: inline-block;
+  float: left;
+  /* do not shrink - elements float on the right of the element */
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+}
+.cd-secondary-nav li:last-of-type {
+  padding-right: 20px;
+}
+.cd-secondary-nav a {
+  display: block;
+  color: #ffffff;
+  opacity: .6;
+  line-height: 50px;
+  padding: 0 1em;
+}
+.cd-secondary-nav a:hover, .cd-secondary-nav a.active {
+  opacity: 1;
+}
+@media only screen and (min-width: 1024px) {
+  .cd-secondary-nav {
+    height: 70px;
+    overflow: visible;
+  }
+  .cd-secondary-nav ul {
+    /* reset mobile style */
+    display: block;
+    text-align: center;
+  }
+  .cd-secondary-nav li {
+    /* reset mobile style */
+    float: none;
+    -webkit-flex-shrink: 1;
+        -ms-flex-negative: 1;
+            flex-shrink: 1;
+  }
+  .cd-secondary-nav a {
+    line-height: 70px;
+  }
+  .cd-secondary-nav a.active {
+    box-shadow: inset 0 -3px #FFD63F;	/* 8F3985 */
+  }
+}
+
+/* --------------------------------
+
+3. Auto-Hiding Navigation - with Sub Nav + Hero Image
+
+-------------------------------- */
+.cd-secondary-nav.fixed {
+  position: fixed;
+  top: 60px;
+}
+.cd-secondary-nav.slide-up {
+  -webkit-transform: translateY(-60px);
+      -ms-transform: translateY(-60px);
+          transform: translateY(-60px);
+}
+@media only screen and (min-width: 1024px) {
+  .cd-secondary-nav.fixed {
+    top: 80px;
+    /* fixes a bug where nav and subnab move with a slight delay */
+    box-shadow: 0 -6px 0 #25283D;
+  }
+  .cd-secondary-nav.slide-up {
+    -webkit-transform: translateY(-80px);
+        -ms-transform: translateY(-80px);
+            transform: translateY(-80px);
+  }
+}
+
+/* --------------------------------
+
+Main content
+
+-------------------------------- */
+.cd-main-content {
+/*  padding: 60px 5% 2em;*/
+  overflow: hidden;
+}
+
+}
+.cd-main-content.sub-nav {
+  /* to be used if there is sub nav */
+  padding-top: 110px;
+}
+.cd-main-content.sub-nav-hero {
+  /* to be used if there is hero image + subnav */
+	padding :0;
+}
+.cd-main-content.sub-nav-hero.secondary-nav-fixed {
+/*	la marge du MENU SECONDAIRE*/
+  margin-top: 50px;
+}
+.cd-main-content p {
+  max-width: 1024px;
+  line-height: 1.6;
+  margin: 2em auto;
+  font-family: "Open Sans", sans-serif;
+  /*color: #a5a8a9;*/
+  color: #5b5b69;
+}
+@media only screen and (min-width: 1024px) {
+  .cd-main-content {
+    padding-top: 80px;
+    padding-top: 80px;
+  }
+  .cd-main-content.sub-nav {
+    padding-top: 150px;
+  }
+  .cd-main-content.sub-nav-hero.secondary-nav-fixed {
+/*	la marge du MENU SECONDAIRE*/
+    margin-top: 70px;
+  }
+  .cd-main-content p {
+    font-size: 2.4rem;
+  }
+}
+
+/*
+	adjust the positioning of in-page links
+	http://nicolasgallagher.com/jump-links-and-viewport-positioning/
+*/
+.cd-main-content.sub-nav :target::before,
+.cd-main-content.sub-nav-hero :target::before {
+  display: block;
+  content: "";
+  margin-top: -50px;
+  height: 50px;
+  visibility: hidden;
+}
+@media only screen and (min-width: 1024px) {
+  .cd-main-content.sub-nav :target::before,
+  .cd-main-content.sub-nav-hero :target::before {
+    margin-top: -70px;
+    height: 70px;
+  }
+}
+
+/* --------------------------------
+
+Intro Section
+
+-------------------------------- */
+
+.cd-hero {
+  /* vertically align its content */
+  display: table;
+  width: 100%;
+  margin-top: 60px;
+  height: 300px;
+  /*background: url(../img/cd_hero_nasa.jpg) no-repeat center;*/
+  /*background: url(../img/header-photo.jpg) no-repeat center;*/
+  background: url(../img/9.png) no-repeat center;
+  background-size: cover;
+  box-shadow: inset 0 0 100px rgba(0,0,0,.4);
+}
+
+.cd-hero .cd-hero-content {
+  /* vertically align inside parent element */
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  background: rgba(255,255,255,0.1);
+}
+
+@media only screen and (min-width: 768px) {
+  .cd-hero {
+    height: 400px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .cd-hero {
+    height: 600px;
+    margin-top: 80px;
+  }
+  #cd-navigation a {
+    padding: .5em;
+  }
+  #cd-navigation a:hover {
+    background-color: rgba(0,0,0,.5);
+    color: white;
+    padding: .5em;
+    border-radius: 5px;
+  }
+}
+
+#agence {
+    background : #272553;
+    /*background:#4F7692;*/
+    color:white;
+    border-radius:5px;
+}
+
+#agence:hover {
+    background: rgba(0,0,0,.5) ;
+    color : #FFD63F ;
+}
+
+@media only screen and (max-width: 1024px) {
+  #agence {
+    border-radius: 0px;
+  }
+}
+
+.pt {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    background: rgba(245,246,247,.85);
+    /*background: #f5f6f7;*/
+    height: 380px;
+		text-align: center;
+}
+
+.pt-cell {
+		display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+		padding: 1em;
+}
+
+.pt-cell #background {
+    color: #888;
+    position: absolute;
+    font-size: 16em;
+    /*width: 100%;*/
+    /*text-align: center;*/
+    left: -.3em;
+    bottom: -.13em;
+    /*top: 45%;
+    transform: translateY(-50%);*/
+    z-index: -1;
+    overflow: hidden;
+}
+
+.pt-cell.imgbl {
+  background-color: rgb(27, 26, 41);
+}
+.pt-cell.imgbl h1 {
+  color: white;
+}
+
+.mef h1 {
+    font-family: "Impact";
+    font-size: 2.5em;
+    -webkit-text-stroke: 2px black;
+    -moz-text-stroke: 2px black;
+    -o-text-stroke: 2px black;
+}
+.mef h1.top {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 10px;
+    text-transform: uppercase;
+}
+.mef h1.bot {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 10px;
+    text-transform: uppercase;
+}
+
+.img1 {
+	/*background: url(../img/wpfinalblur.jpg) no-repeat bottom;*/
+    /*background: url(../img/img1_spacenaute.jpg) no-repeat center;*/
+    /*background: url(../img/3.jpg) no-repeat center;*/
+    background: url(../img/1.png) no-repeat center;
+	background-size: cover;
+	color: white;
+}.img2 {
+	/*background: url(../img/img2_spacenaute.jpg) no-repeat center;*/
+    /*background: url(../img/4.jpg) no-repeat center;*/
+    background: url(../img/2.png) no-repeat center;
+	background-size: cover;
+	color: white;
+    /*filter: hue-rotate(200deg);*/
+}.img3 {
+	/*background: url(../img/img3_spacenaute.jpg) no-repeat center;*/
+    /*background: url(../img/1.jpg) no-repeat center;*/
+    background: url(../img/4.png) no-repeat center;
+	background-size: cover;
+	color: white;
+    /*filter: hue-rotate(100deg);*/
+}.img4 {
+	/*background: url(../img/img4_spacenaute.jpg) no-repeat top;*/
+    /*background: url(../img/2.jpg) no-repeat center;*/
+    background: url(../img/8.png) no-repeat center;
+	background-size: cover;
+	color: white;
+    /*filter: hue-rotate(300deg);*/
+}
+
+
+
+/*FOOTER DE LA PAGE*/
+.cd-footer {
+  box-shadow: inset 0 0 10px rgba(0,0,0,.25);
+  overflow: hidden;
+  height: 13em;
+  line-height: 1.5;
+}
+.sm-display {
+  display: none;
+}
+/*min-width 768 auparavant*/
+@media only screen and (min-width: 660px) {
+  .cd-footer {
+    height: 11em;
+  }
+  .cd-credit {
+    margin-top: 0em;
+  }
+  .cd-main-content p {
+    font-size: 2rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .pt-cell h1 {
+    font-size: 2em;
+  }
+  .pt-cell {
+    display: block;
+    height: auto;
+  }
+  .pt {
+    display: block;
+    height: auto;
+  }
+  .sm-display-none {
+    display:none;
+  }
+  .sm-display {
+    display: block;
+  }
+  .pt-cell {
+    /*min-height: 200px;*/
+    min-height: 18em;
+  }
+
+
+  .cd-hero-content h2 {
+    /*font-weight: 700;*/
+    color: rgba(255,255,255,.85);
+    font-size: 1.75em;
+  }
+  .cd-hero-content h1 {
+    font-size: 2em;
+    text-shadow: 2px 2px #fff;
+  }
+  /*.cd-main-content-astyliser div{
+    min-height: 200px;
+  }
+  .cd-main-content-astyliser h1, .cd-main-content-astyliser p {
+    transform: translateY(200%);
+  }*/
+}
+
+
+.cd-footer a {
+  color: #555;
+  text-decoration: none;
+}
+.cd-footer a:hover {
+  /*color: #FFD63F;*/
+  color: rgb(95, 137, 199);
+}
+
+.cd-footer-content {
+  margin-left: 3em;
+  margin-bottom: 3em;
+}
+.cd-footer-element {
+  margin-top: 2em;
+  float: left;
+  margin-right: 2em;
+}
+.cd-footer-element ul {
+  padding-left: 1em;
+}
+
+
+.cd-credit {
+  float: right;
+  margin-right: 2em;
+  margin-top: 2em;
+}
+.copyright {
+
+}
+.copyright li {
+  text-align: right;
+  line-height: 2em;
+}
+
+
+.pt-cell.largeicon {
+  line-height: 1.5;
+  margin: auto;
+  font-size: 150%;
+  text-align: left;
+}
+.pt-cell.largeicon ul {
+  transform: translateX(35%);
+}
+
+.pt-cell.mgauto{
+  padding-bottom: 4em;
+  vertical-align: initial;
+}
+
+.cd-sitemap ul {
+  text-align: center;
+}
+
+input,select, textarea{
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid rgba(255,255,255,.8);
+    transition: border 0.25s ease-in-out;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+}
+input:focus, select:focus, textarea:focus{transition
+    border-bottom: 3px solid rgba(0,0,0,.2);
+}
+input:hover,select:hover, textarea:hover{
+    border-bottom: 3px solid rgba(0,0,0,.1);
+    transition: border 0.25s ease-in-out;
+}
+button {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1em;
+    margin-top: .75em;
+    border: none;
+    border-radius: 5px;
+    padding: .5em;
+    background-color: rgba(255,255,255,0.9);
+}
+button:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+button:focus {
+    background-color: rgba(0,0,0,.2);
+}
+
+.img-add {
+    width: 50px ;
+    display : inline-block ;
+}
+
+.inline-block {
+  display: flex;
+}
+
+.alignleft {
+  text-align: left;
+  padding-left: .5em;
+}
+.alignright {
+  text-align: right;
+}
+
+.smallItalic {
+  font-size: .9em;
+    font-style: italic;
+    margin-left: 2em;
+    background-color: #444;
+    color: white;
+    border-radius: 5px;
+    padding: .5em;
+}
+
+#description {
+  height: 48px;
+}
